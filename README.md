@@ -17,7 +17,11 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 ## Develop log
 
- - 
+ - `$ sail composer require laravel/ui`
+ - `$ sail artisan ui bootstrap` - подключение bootstrap
+ - `$ sail artisan ui:auth` - установка базовой аутентификации
+ - `$ npm install && npm run dev` - компиляция фронта
+ - при настройке подключения к БД возникли проблемы, команды `$ sail down -v` и `$ sail artisan config:clear` - выручили!
 
 
 
@@ -35,7 +39,7 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
 - **[Cyber-Duck](https://cyber-duck.co.uk)**
 - **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
+- **[Jump24](https://jump24.co.uk)** 
 - **[Redberry](https://redberry.international/laravel/)**
 - **[Active Logic](https://activelogic.com)**
 - **[byte5](https://byte5.de)**
