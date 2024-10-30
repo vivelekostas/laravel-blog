@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Main\IndexController as MainIndexController;
+use App\Http\Controllers\Admin\Tag\TagController;
 use App\Http\Controllers\Main\IndexController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +22,9 @@ Route::get('/', IndexController::class);
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', MainIndexController::class);
+
+    Route::resource('category', CategoryController::class);
+    Route::resource('tag', TagController::class);
 });
 
 Auth::routes();
