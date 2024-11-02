@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Main\IndexController as MainIndexController;
+use App\Http\Controllers\Admin\Post\PostController;
 use App\Http\Controllers\Admin\Tag\TagController;
 use App\Http\Controllers\Main\IndexController;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +26,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::resource('category', CategoryController::class);
     Route::resource('tag', TagController::class);
+    Route::resource('post', PostController::class);
 });
 
 Auth::routes();
