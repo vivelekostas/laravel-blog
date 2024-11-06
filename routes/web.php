@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', IndexController::class);
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function () {
     Route::get('/', MainIndexController::class);
 
     Route::resource('category', CategoryController::class);
