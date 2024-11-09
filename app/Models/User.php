@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Enums\RoleType;
+use App\Notifications\SendVerifyWithQueueNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -48,4 +49,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
         'role' => RoleType::class
     ];
+
+    /**
+     * Как бы, переопределение метода, чтобы он отправил письмо с верификацией в очередь.
+     */
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new SendVerifyWithQueueNotification());
+    }
 }
