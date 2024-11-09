@@ -12,8 +12,8 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard v1</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
+                            <li class="breadcrumb-item active">Категории</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -47,9 +47,11 @@
                                             <tr>
                                                 <td>{{ $category->id }}</td>
                                                 <td>{{ $category->title }}</td>
-                                                <td class="text-center"><a href="{{ route('category.show', $category->id) }}"><i
+                                                <td class="text-center"><a
+                                                        href="{{ route('category.show', $category->id) }}"><i
                                                             class="far fa-eye"></i></a></td>
-                                                <td class="text-center"><a href="{{ route('category.edit', $category->id) }}"
+                                                <td class="text-center"><a
+                                                        href="{{ route('category.edit', $category->id) }}"
                                                         class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
                                                 <td class="text-center">
                                                     <form action="{{ route('category.destroy', $category->id) }}"

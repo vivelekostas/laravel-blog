@@ -12,8 +12,8 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard v1</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
+                            <li class="breadcrumb-item active">Пользователи</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -56,8 +56,7 @@
                                                 <td class="text-center"><a href="{{ route('user.edit', $user->id) }}"
                                                         class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
                                                 <td class="text-center">
-                                                    <form action="{{ route('user.destroy', $user->id) }}"
-                                                        method="POST">
+                                                    <form action="{{ route('user.destroy', $user->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="border-0 bg-transparent">

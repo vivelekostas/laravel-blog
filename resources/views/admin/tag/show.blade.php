@@ -9,8 +9,7 @@
                 <div class="row mb-2">
                     <div class="col-sm-6 d-flex align-items-center">
                         <h1 class="m-0 mr-2">{{ $tag->title }}</h1>
-                        <a href="{{ route('tag.edit', $tag->id) }}" class="text-success"><i
-                                class="fas fa-pencil-alt"></i></a>
+                        <a href="{{ route('tag.edit', $tag->id) }}" class="text-success"><i class="fas fa-pencil-alt"></i></a>
                         <form action="{{ route('tag.destroy', $tag->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
@@ -21,8 +20,9 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard v1</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('tag.index') }}">Теги</a></li>
+                            <li class="breadcrumb-item active">{{ $tag->title }}</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
