@@ -27,7 +27,7 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-1 mb-3">
-                        <a href="{{ route('post.create') }}" class="btn btn-block btn-primary">Добавить</a>
+                        <a href="{{ route('admin.post.create') }}" class="btn btn-block btn-primary">Добавить</a>
                     </div>
                 </div>
                 <div class="row">
@@ -49,12 +49,14 @@
                                                 <td>{{ $post->id }}</td>
                                                 <td>{{ $post->title }}</td>
                                                 <td>{{ Str::limit($post->content, 40, '...') }}</td>
-                                                <td class="text-center"><a href="{{ route('post.show', $post->id) }}"><i
+                                                <td class="text-center"><a
+                                                        href="{{ route('admin.post.show', $post->id) }}"><i
                                                             class="far fa-eye"></i></a></td>
-                                                <td class="text-center"><a href="{{ route('post.edit', $post->id) }}"
+                                                <td class="text-center"><a href="{{ route('admin.post.edit', $post->id) }}"
                                                         class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
                                                 <td class="text-center">
-                                                    <form action="{{ route('post.destroy', $post->id) }}" method="POST">
+                                                    <form action="{{ route('admin.post.destroy', $post->id) }}"
+                                                        method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="border-0 bg-transparent">

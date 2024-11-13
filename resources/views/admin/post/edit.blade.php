@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('post.index') }}">Посты</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.post.index') }}">Посты</a></li>
                             <li class="breadcrumb-item active">Редактирование поста</li>
                         </ol>
                     </div><!-- /.col -->
@@ -28,7 +28,8 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{ route('post.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.post.update', $post->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PATCH')
                             <div class="form-group w-25">

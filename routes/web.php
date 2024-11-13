@@ -9,6 +9,7 @@ use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Personal\Comment\CommentController;
 use App\Http\Controllers\Personal\Liked\LikedController;
 use App\Http\Controllers\Personal\Main\IndexController as PersonalMainIndexController;
+use App\Http\Controllers\Post\PostController as MainPostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', IndexController::class)->name('main.index');
+
+Route::resource('/post', MainPostController::class)->only(['index', 'show']);
 
 Route::group(['prefix' => 'personal', 'middleware' => ['auth', 'verified']], function () {
     Route::get('/', PersonalMainIndexController::class)->name('personal.main.index');
@@ -42,7 +45,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified', 'admin']
 
     Route::resource('category', CategoryController::class);
     Route::resource('tag', TagController::class);
-    Route::resource('post', PostController::class);
+    Route::resource('post', PostController::class)->names('admin.post');
     Route::resource('user', UserController::class);
 });
 

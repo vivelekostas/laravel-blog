@@ -42,7 +42,7 @@ class PostController extends Controller
         $data = $request->validated();
         $this->postService->store($data);
 
-        return redirect()->route('post.index');
+        return redirect()->route('admin.post.index');
     }
 
     /**
@@ -83,6 +83,6 @@ class PostController extends Controller
     {
         $post->delete();
 
-        return redirect()->route('post.index');
+        return redirect()->route('admin.post.index');
     }
 }

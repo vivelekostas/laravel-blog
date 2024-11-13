@@ -9,9 +9,9 @@
                 <div class="row mb-2">
                     <div class="col-sm-6 d-flex align-items-center">
                         <h1 class="m-0 mr-2">{{ $post->title }}</h1>
-                        <a href="{{ route('post.edit', $post->id) }}" class="text-success"><i
+                        <a href="{{ route('admin.post.edit', $post->id) }}" class="text-success"><i
                                 class="fas fa-pencil-alt"></i></a>
-                        <form action="{{ route('post.destroy', $post->id) }}" method="POST">
+                        <form action="{{ route('admin.post.destroy', $post->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="border-0 bg-transparent">
@@ -22,7 +22,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('post.index') }}">Посты</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.post.index') }}">Посты</a></li>
                             <li class="breadcrumb-item active">{{ $post->title }}</li>
                         </ol>
                     </div><!-- /.col -->

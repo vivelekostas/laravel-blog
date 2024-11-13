@@ -43,7 +43,8 @@
                                                 <td>{{ $post->id }}</td>
                                                 <td>{{ $post->title }}</td>
                                                 <td>{!! Str::limit($post->content, 40, '...') !!}</td>
-                                                <td class="text-center"><a href="{{ route('post.show', $post->id) }}"><i
+                                                <td class="text-center"><a
+                                                        href="{{ route('admin.post.show', $post->id) }}"><i
                                                             class="far fa-eye"></i></a></td>
                                                 <td class="text-center">
                                                     <form action="{{ route('personal.liked.destroy', $post->id) }}"
