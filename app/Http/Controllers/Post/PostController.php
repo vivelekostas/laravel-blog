@@ -32,7 +32,7 @@ class PostController extends Controller
         return view('post.show', [
             'post' => $post,
             'date' => Carbon::parse($post->created_at),
-            'relatedPost' => Post::where('category_id', $post->category_id)
+            'relatedPosts' => Post::where('category_id', $post->category_id)
                 ->where('id', '!=', $post->id)
                 ->get()
                 ->take(3),
