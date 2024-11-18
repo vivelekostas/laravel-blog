@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Post\PostController;
 use App\Http\Controllers\Admin\Tag\TagController;
 use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\Comment\CommentController as CommentCommentController;
+use App\Http\Controllers\Like\LikeController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Personal\Comment\CommentController;
 use App\Http\Controllers\Personal\Liked\LikedController;
@@ -29,6 +30,7 @@ Route::get('/', IndexController::class)->name('main.index');
 
 Route::resource('/post', MainPostController::class)->only(['index', 'show']);
 Route::resource('post.comment', CommentCommentController::class)->only(['store']);
+Route::post('/post/{post}/like', LikeController::class)->name('post.like.store');
 
 Route::group(['prefix' => 'personal', 'middleware' => ['auth', 'verified']], function () {
     Route::get('/', PersonalMainIndexController::class)->name('personal.main.index');
