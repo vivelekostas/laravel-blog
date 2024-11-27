@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -16,6 +17,7 @@ class PostController extends Controller
     {
         return view('post.index', [
             'posts' => Post::paginate(6),
+            'categories' => Category::all(),
             'randomPosts' => Post::get()->random(4),
             'likedPosts' => Post::withCount('likedUsers')
                 ->orderBy('liked_users_count', 'DESC')

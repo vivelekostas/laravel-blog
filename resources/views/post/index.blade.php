@@ -77,9 +77,21 @@
                             @endforeach
                         </ul>
                     </div>
-                    <div class="widget">
-                        <h5 class="widget-title">Categories</h5>
-                        <img src="{{ asset('assets/images/blog_widget_categories.jpg') }}" alt="categories" class="w-100">
+                    <div class="widget widget-post-list">
+                        <div class="widget">
+                            <h5 class="widget-title">Категории</h5>
+                            <ul class="post-list">
+                                @foreach ($categories as $category)
+                                    <li class="post">
+                                        <a href="#" class="post-permalink media">
+                                            <div class="media-body">
+                                                <h6 class="post-title">{{ $category->title }}</h6>
+                                            </div>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
