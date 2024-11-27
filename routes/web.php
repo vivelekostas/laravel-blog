@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Main\IndexController as MainIndexController;
-use App\Http\Controllers\Admin\Post\PostController;
+use App\Http\Controllers\Admin\Post\PostController as AdminPostController;
 use App\Http\Controllers\Admin\Tag\TagController;
 use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\Comment\CommentController as CommentCommentController;
@@ -11,6 +11,7 @@ use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Personal\Comment\CommentController;
 use App\Http\Controllers\Personal\Liked\LikedController;
 use App\Http\Controllers\Personal\Main\IndexController as PersonalMainIndexController;
+use App\Http\Controllers\Personal\Post\PostController as PersonalPostController;
 use App\Http\Controllers\Post\PostController as MainPostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -37,11 +38,10 @@ Route::group(['prefix' => 'personal', 'middleware' => ['auth', 'verified']], fun
     Route::get('/liked', [LikedController::class, 'index'])->name('personal.liked.index');
     Route::delete('/liked/{post}', [LikedController::class, 'destroy'])->name('personal.liked.destroy');
 
-    //todo переписать на ресурсный!!
-    Route::get('/comment', [CommentController::class, 'index'])->name('personal.comment.index');
-    Route::get('/comment/{comment}/edit', [CommentController::class, 'edit'])->name('personal.comment.edit');
-    Route::patch('/comment/{comment}', [CommentController::class, 'update'])->name('personal.comment.update');
-    Route::delete('/comment/{comment}', [CommentController::class, 'destroy'])->name('personal.comment.destroy');
+    Route::resource('post', PersonalPostController::class)->names('personal.post');
+
+    Route::resource('/comment', CommentController::class)->except(['show', 'create', 'store'])->names('personal.comment');
+
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified', 'admin']], function () {
@@ -49,7 +49,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified', 'admin']
 
     Route::resource('category', CategoryController::class);
     Route::resource('tag', TagController::class);
-    Route::resource('post', PostController::class)->names('admin.post');
+    Route::resource('post', AdminPostController::class)->names('admin.post');
     Route::resource('user', UserController::class);
 });
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Post;
+namespace App\Http\Controllers\Personal\Post;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\StorePostRequest;
@@ -19,8 +19,10 @@ class PostController extends Controller
      */
     public function index()
     {
-
-        return view('admin.post.index', ['posts' => Post::paginate(10)]);
+        $userId = auth()->user()->id;
+        return view('personal.post.index', [
+            'posts' => Post::query()->where('user_id', $userId)->get()
+        ]);
     }
 
     /**
@@ -28,7 +30,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.post.create', [
+        return view('personal.post.create', [
             'categories' => Category::all(),
             'tags' => Tag::all(),
         ]);
@@ -42,7 +44,7 @@ class PostController extends Controller
         $data = $request->validated();
         $this->postService->store($data);
 
-        return redirect()->route('admin.post.index');
+        return redirect()->route('personal.post.index');
     }
 
     /**
@@ -50,7 +52,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('admin.post.show', ['post' => $post]);
+        return view('personal.post.show', ['post' => $post]);
     }
 
     /**
@@ -58,7 +60,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.post.edit', [
+        return view('personal.post.edit', [
             'post' => $post,
             'categories' => Category::all(),
             'tags' => Tag::all(),
@@ -73,7 +75,7 @@ class PostController extends Controller
         $data = $request->validated();
         $post = $this->postService->update($data, $post);
 
-        return view('admin.post.show', ['post' => $post]);
+        return view('personal.post.show', ['post' => $post]);
     }
 
     /**
@@ -83,6 +85,6 @@ class PostController extends Controller
     {
         $post->delete();
 
-        return redirect()->route('admin.post.index');
+        return redirect()->route('personal.post.index');
     }
 }

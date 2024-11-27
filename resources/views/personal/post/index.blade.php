@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('personal.layouts.main')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -12,7 +12,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('personal.main.index') }}">Главная</a></li>
                             <li class="breadcrumb-item active">Посты</li>
                         </ol>
                     </div><!-- /.col -->
@@ -27,7 +27,7 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-1 mb-3">
-                        <a href="{{ route('admin.post.create') }}" class="btn btn-block btn-primary">Добавить</a>
+                        <a href="{{ route('personal.post.create') }}" class="btn btn-block btn-primary">Добавить</a>
                     </div>
                 </div>
                 <div class="row">
@@ -50,12 +50,12 @@
                                                 <td>{{ $post->title }}</td>
                                                 <td>{!! Str::limit($post->content, 40, '...') !!}</td>
                                                 <td class="text-center"><a
-                                                        href="{{ route('admin.post.show', $post->id) }}"><i
+                                                        href="{{ route('personal.post.show', $post->id) }}"><i
                                                             class="far fa-eye"></i></a></td>
-                                                <td class="text-center"><a href="{{ route('admin.post.edit', $post->id) }}"
+                                                <td class="text-center"><a href="{{ route('personal.post.edit', $post->id) }}"
                                                         class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
                                                 <td class="text-center">
-                                                    <form action="{{ route('admin.post.destroy', $post->id) }}"
+                                                    <form action="{{ route('personal.post.destroy', $post->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
@@ -68,9 +68,6 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <div class="card-footer clearfix">
-                                    {{ $posts->links() }}
-                                </div>
                             </div>
                             <!-- /.card-body -->
                         </div>

@@ -15,6 +15,7 @@ class Post extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'user_id',
         'title',
         'content',
         'preview_image',
@@ -43,6 +44,14 @@ class Post extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * Post author.
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function likedUsers(): BelongsToMany

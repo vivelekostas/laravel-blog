@@ -13,6 +13,10 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        return view('personal.main.index');
+        $userId = auth()->user()->id;
+        return view('personal.main.index', [
+            'postsCount' => Post::all()->where('user_id', $userId)->count(),
+            //todo добавить count любимых постов и комментариев
+        ]);
     }
 }
