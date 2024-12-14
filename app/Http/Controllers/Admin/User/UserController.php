@@ -9,7 +9,6 @@ use App\Http\Requests\Admin\User\UpdateUserRequest;
 use App\Mail\User\PasswordMail;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -22,7 +21,7 @@ class UserController extends Controller
     public function index()
     {
 
-        return view('admin.user.index', ['users' => User::all()]);
+        return view('admin.user.index', ['users' => User::paginate(10)]);
     }
 
     /**
@@ -40,7 +39,7 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $password = Str::random(10);
-        
+
         $data['password'] = Hash::make($password);
         $user = User::query()->firstOrCreate(['email' => $data['email']], $data);
 

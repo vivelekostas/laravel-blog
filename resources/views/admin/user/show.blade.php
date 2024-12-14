@@ -41,16 +41,38 @@
                             <div class="card-body table-responsive p-0">
                                 <table class="table table-hover text-nowrap">
                                     <tbody>
-                                        <tr>
-                                            <td>ID</td>
-                                            <td>{{ $user->id }}</td>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Имя</td>
-                                            <td>{{ $user->name }}</td>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>ID</td>
+                                        <td>{{ $user->id }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Имя</td>
+                                        <td>{{ $user->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>{{ $user->email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email верифицирован</td>
+                                        <td>{{ $user->email_verified_at }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Роль</td>
+                                        <td>{{ $user->role->label() }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Удален</td>
+                                        <td>{{ $user->deleted_at }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Создан</td>
+                                        <td>{{ $user->created_at }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Обновлен</td>
+                                        <td>{{ $user->created_at }}</td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>

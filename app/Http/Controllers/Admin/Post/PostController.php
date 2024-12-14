@@ -12,7 +12,9 @@ use App\Services\PostService;
 
 class PostController extends Controller
 {
-    public function __construct(protected PostService $postService) {}
+    public function __construct(protected PostService $postService)
+    {
+    }
 
     /**
      * Display a listing of the resource.
@@ -20,7 +22,9 @@ class PostController extends Controller
     public function index()
     {
 
-        return view('admin.post.index', ['posts' => Post::paginate(10)]);
+        return view('admin.post.index', [
+            'posts' => Post::without('category')->paginate(10)
+        ]);
     }
 
     /**

@@ -36,38 +36,44 @@
                             <div class="card-body table-responsive p-0">
                                 <table class="table table-hover text-nowrap">
                                     <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Имя</th>
-                                            <th>Emai</th>
-                                            <th>Роль</th>
-                                            <th colspan="3" class="text-center">Действия</th>
-                                        </tr>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Имя</th>
+                                        <th>Emai</th>
+                                        <th>Роль</th>
+                                        <th colspan="3" class="text-center">Действия</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($users as $user)
-                                            <tr>
-                                                <td>{{ $user->id }}</td>
-                                                <td>{{ $user->name }}</td>
-                                                <td>{{ $user->email }}</td>
-                                                <td>{{ $user->role->label() }}</td>
-                                                <td class="text-center"><a href="{{ route('user.show', $user->id) }}"><i
-                                                            class="far fa-eye"></i></a></td>
-                                                <td class="text-center"><a href="{{ route('user.edit', $user->id) }}"
-                                                        class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
-                                                <td class="text-center">
-                                                    <form action="{{ route('user.destroy', $user->id) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="border-0 bg-transparent">
-                                                            <i class="fas fa-trash text-danger" role="button"></i>
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                    @foreach ($users as $user)
+                                        <tr>
+                                            <td>{{ $user->id }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->role->label() }}</td>
+                                            <td class="text-center"><a href="{{ route('user.show', $user->id) }}"><i
+                                                        class="far fa-eye"></i></a></td>
+                                            <td class="text-center"><a href="{{ route('user.edit', $user->id) }}"
+                                                                       class="text-success"><i
+                                                        class="fas fa-pencil-alt"></i></a></td>
+                                            <td class="text-center">
+                                                <form action="{{ route('user.destroy', $user->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="border-0 bg-transparent">
+                                                        <i class="fas fa-trash text-danger" role="button"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
+                                <div class="card-footer clearfix">
+                                    <ul class="pagination pagination-sm m-0 float-right">
+                                        <li class="page-item">{{ $users->links() }}</li>
+                                    </ul>
+                                </div>
                             </div>
                             <!-- /.card-body -->
                         </div>

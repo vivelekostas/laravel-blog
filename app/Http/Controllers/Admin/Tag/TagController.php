@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Tag\StoreTagRequest;
 use App\Http\Requests\Admin\Tag\UpdateTagRequest;
 use App\Models\Tag;
-use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
@@ -16,7 +15,7 @@ class TagController extends Controller
     public function index()
     {
 
-        return view('admin.tag.index', ['tags' => Tag::all()]);
+        return view('admin.tag.index', ['tags' => Tag::paginate(10)]);
     }
 
     /**

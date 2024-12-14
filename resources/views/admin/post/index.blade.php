@@ -36,40 +36,43 @@
                             <div class="card-body table-responsive p-0">
                                 <table class="table table-hover text-nowrap">
                                     <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Название</th>
-                                            <th>Контент</th>
-                                            <th colspan="3" class="text-center">Действия</th>
-                                        </tr>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Название</th>
+                                        <th>Контент</th>
+                                        <th colspan="3" class="text-center">Действия</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($posts as $post)
-                                            <tr>
-                                                <td>{{ $post->id }}</td>
-                                                <td>{{ $post->title }}</td>
-                                                <td>{!! Str::limit($post->content, 40, '...') !!}</td>
-                                                <td class="text-center"><a
-                                                        href="{{ route('admin.post.show', $post->id) }}"><i
-                                                            class="far fa-eye"></i></a></td>
-                                                <td class="text-center"><a href="{{ route('admin.post.edit', $post->id) }}"
-                                                        class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
-                                                <td class="text-center">
-                                                    <form action="{{ route('admin.post.destroy', $post->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="border-0 bg-transparent">
-                                                            <i class="fas fa-trash text-danger" role="button"></i>
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                    @foreach ($posts as $post)
+                                        <tr>
+                                            <td>{{ $post->id }}</td>
+                                            <td>{{ $post->title }}</td>
+                                            <td>{!! Str::limit($post->content, 40, '...') !!}</td>
+                                            <td class="text-center"><a
+                                                    href="{{ route('admin.post.show', $post->id) }}"><i
+                                                        class="far fa-eye"></i></a></td>
+                                            <td class="text-center"><a href="{{ route('admin.post.edit', $post->id) }}"
+                                                                       class="text-success"><i
+                                                        class="fas fa-pencil-alt"></i></a></td>
+                                            <td class="text-center">
+                                                <form action="{{ route('admin.post.destroy', $post->id) }}"
+                                                      method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="border-0 bg-transparent">
+                                                        <i class="fas fa-trash text-danger" role="button"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                                 <div class="card-footer clearfix">
-                                    {{ $posts->links() }}
+                                    <ul class="pagination pagination-sm m-0 float-right">
+                                        <li class="page-item">{{ $posts->links() }}</li>
+                                    </ul>
                                 </div>
                             </div>
                             <!-- /.card-body -->

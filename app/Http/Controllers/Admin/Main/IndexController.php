@@ -13,10 +13,10 @@ class IndexController extends Controller
     public function __invoke()
     {
         return view('admin.main.index', [
-            'usersCount' => User::all()->count(),
-            'postsCount' => Post::all()->count(),
-            'categoriesCount' => Category::all()->count(),
-            'tagsCount' => Tag::all()->count(),
+            'usersCount' => User::count(),
+            'postsCount' => Post::count(),
+            'categoriesCount' => Category::count(),
+            'tagsCount' => Tag::count(),
         ]);
     }
 }

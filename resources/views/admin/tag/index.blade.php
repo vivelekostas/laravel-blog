@@ -64,6 +64,11 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                <div class="card-footer clearfix">
+                                    <ul class="pagination pagination-sm m-0 float-right">
+                                        <li class="page-item">{{ $tags->links() }}</li>
+                                    </ul>
+                                </div>
                             </div>
                             <!-- /.card-body -->
                         </div>
