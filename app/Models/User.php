@@ -60,6 +60,16 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new SendVerifyWithQueueNotification());
     }
 
+    public function isAdmin(): bool
+    {
+        return $this->role->value === RoleType::ROLE_ADMIN->value;
+    }
+
+    public function isReader(): bool
+    {
+        return $this->role->value === RoleType::ROLE_READER->value;
+    }
+
     /**
      * User posts.
      */

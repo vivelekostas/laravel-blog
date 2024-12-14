@@ -21,7 +21,7 @@ class PostController extends Controller
     {
         $userId = auth()->user()->id;
         return view('personal.post.index', [
-            'posts' => Post::query()->where('user_id', $userId)->get()
+            'posts' => Post::query()->without('category')->where('user_id', $userId)->get()
         ]);
     }
 

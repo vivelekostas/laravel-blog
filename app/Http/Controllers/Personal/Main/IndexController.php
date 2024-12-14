@@ -3,20 +3,17 @@
 namespace App\Http\Controllers\Personal\Main;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Post;
-use App\Models\Tag;
-use App\Models\User;
-use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
     public function __invoke()
     {
-        $userId = auth()->user()->id;
+        $user = auth()->user();
         return view('personal.main.index', [
-            'postsCount' => Post::all()->where('user_id', $userId)->count(),
-            //todo добавить count любимых постов и комментариев
+            'userName' => $user->name,
+            'postsCount' => $user->posts->count(),
+            'likedPostsCount' => $user->likedPosts->count(),
+            'commentsCount' => $user->comments->count(),
         ]);
     }
 }

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Category\StoreCategoryRequest;
 use App\Http\Requests\Admin\Category\UpdateCategoryRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -15,7 +14,6 @@ class CategoryController extends Controller
      */
     public function index()
     {
-
         return view('admin.category.index', ['categories' => Category::all()]);
     }
 

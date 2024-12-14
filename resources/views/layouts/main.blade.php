@@ -34,10 +34,16 @@
                         </li>
                         <li class="nav-item">
                             @auth
+                                @if(auth()->user()->isAdmin())
+                                <a class="nav-link" href="{{ route('admin.main.index') }}">Админ панель</a>
+                                @endif
+                                @if(auth()->user()->isReader())
                                 <a class="nav-link" href="{{ route('personal.main.index') }}">Личный кабинет</a>
+                                @endif
                             @endauth
                             @guest
-                                <a class="nav-link" href="{{ route('personal.main.index') }}">Войти</a>
+                                <a class="nav-link" href="{{ route('login') }}">Войти</a>
+{{--                                <a class="nav-link" href="{{ route('personal.main.index') }}">Войти</a>--}}
                             @endguest
                         </li>
                     </ul>

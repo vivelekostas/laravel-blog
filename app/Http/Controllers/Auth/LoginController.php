@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\RoleType;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -36,5 +37,15 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
+    }
+
+    public function redirectTo()
+    {
+        $for = [
+            RoleType::ROLE_ADMIN->value => 'admin.main.index',
+            RoleType::ROLE_READER->value => 'personal.main.index',
+        ];
+
+        return $this->redirectTo = route($for[auth()->user()->role->value]);
     }
 }

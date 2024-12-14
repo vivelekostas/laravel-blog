@@ -17,7 +17,7 @@ class PostService implements StoreUpdateInterface
                 $tagIds = $data['tag_ids'];
                 unset($data['tag_ids']);
             }
-            
+
             $data['user_id'] = auth()->user()->id;
             $data['preview_image'] = Storage::disk('public')->put('/image', $data['preview_image']);
             $data['main_image'] = Storage::disk('public')->put('/image', $data['main_image']);
